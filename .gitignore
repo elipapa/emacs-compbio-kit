@@ -1,0 +1,36 @@
+.DS_Store
+el-get/*
+loaddefs.el*
+backups/*
+auto-save-list
+custom.el
+*elc
+*.pyc
+places
+url/cookies
+elpa-to-submit/nxhtml/etc/schema/xhtml-loader.rnc
+thumbs/*
+oddmuse/*
+mail
+.newsrc-dribble
+.nnmail-cache
+/#.newsrc-dribble#
+.svn
+.DS_Store
+image-dired/
+elim/
+elpa-to-submit/nxhtml/etc/schema/xhtml-loader.rnc~
+tramp
+ac-comphist.dat
+*.dat
+
+## exported files
+doc
+eshell/lastdir
+eshell/history
+
+## ignore packages held in the src directory
+src
+
+## org stuff
+.org-id-locations

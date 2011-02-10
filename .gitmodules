@@ -1,0 +1,7 @@
+##snippets
+[submodule "mysnippets/text-mode/org-mode"]
+	path = mysnippets/text-mode/org-mode
+	url = http://github.com/eschulte/yasnippet-org-mode.git
+[submodule "mysnippets/text-mode/ess-mode"]
+	path = mysnippets/text-mode/ess-mode
+	url = https://github.com/elipapa/yasnippet-ess.git

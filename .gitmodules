@@ -5,3 +5,9 @@
 [submodule "mysnippets/text-mode/ess-mode"]
 	path = mysnippets/text-mode/ess-mode
 	url = https://github.com/elipapa/yasnippet-ess.git
+[submodule "snippets/text-mode/org-mode"]
+	path = snippets/text-mode/org-mode
+	url = http://github.com/eschulte/yasnippet-org-mode.git
+[submodule "snippets/text-mode/ess-mode"]
+	path = snippets/text-mode/ess-mode
+	url = http://github.com/elipapa/yasnippet-ess.git

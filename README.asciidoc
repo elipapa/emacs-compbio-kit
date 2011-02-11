@@ -23,7 +23,11 @@ I decided to try the second option because it has the least setup time. Since it
 == TODO
 - fix ESS compilation (if it happens again?)
 
-- incorporate my-python.el with the autocomplete function, etc.
-- incorporate the useful pieces of the emacs-starter-kit
-- learn ido-mode and define the customizations that we want/need
+- incorporate my-python.el with the autocomplete function, etc. see if this [https://github.com/gabrielelanaro/emacs-starter-kit/blob/master/starter-kit-python.el] has any useful customization
+- incorporate the useful pieces of the emacs-starter-kit 
+-- [https://github.com/squ1b3r/emacs-starter-kit] this guy is starting to use el-get
+-- [https://github.com/technomancy/emacs-starter-kit/tree] this is the original
+-- [https://github.com/kjhealy/emacs-starter-kit] focus on R/ESS/latex
+-- 
+- learn ido-mode [http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/] and define the customizations that we want/need
 - browse the el-get recipes [https://github.com/dimitri/el-get/tree/master/recipes] to see if there are interesting packages (eg. CSV/TSV files mode)

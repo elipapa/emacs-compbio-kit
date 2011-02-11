@@ -1,0 +1,29 @@
+== package managers
+
+this is what i understand at the moment (feb 10 2011) about package managers:
+
+- package.el is used as the package manager in official emacs
+- at the moment package.el does not support git repositories, as far as i can tell
+- it seems that the development on package.el is stalled at the moment, but it will be the official emacs package manager (which is probably a shame, considering that...)
+- el-get can grab git repos as well as apt-get and package.el(elpa) repos
+- epackage/DELPS can do something similar
+
+
+So:
+
+- it is best to move the big LISPs directories (org-mode and ESS) out of my version control and put them in some other version control (el-get or package.el through ELPA)
+
+- two ways to do so (after moving everything that is on ELPA, under that system):
+1. use git submodules (See http://github.com/eschulte/emacs-starter-kit/ for an example) and do a git pull for everything you need
+2. use el-get, which automates retrieval of git repos, etc.
+
+I decided to try the second option because it has the least setup time. Since it's probable I won't remember all the git submodules architecture next time I change stuff around this folder, I figured it would be best to choose a method that was easily parsable.
+
+
+== TODO
+- fix ESS compilation (if it happens again?)
+
+- incorporate my-python.el with the autocomplete function, etc.
+- incorporate the useful pieces of the emacs-starter-kit
+- learn ido-mode and define the customizations that we want/need
+- browse the el-get recipes [https://github.com/dimitri/el-get/tree/master/recipes] to see if there are interesting packages (eg. CSV/TSV files mode)

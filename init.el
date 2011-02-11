@@ -36,6 +36,13 @@
 	auto-complete
 	dired+
 	dired-details
+	browse-kill-ring
+	fit-frame
+	full-ack
+	ipython
+	markdown-mode
+	python-mode
+	rst-mode
         
 	(:name autopair
 	       :after (lambda ()
@@ -69,11 +76,18 @@
                                                     (turn-on-auto-fill)
                                                     (require 'asciidoc)))))
 	(:name ssh
-	       :type url
-	       :url http:somethingsomething)
+	       :type http
+	       :url http://www.splode.com/~friedman/software/emacs-lisp/src/ssh.el
+	       :features ssh)
+
+	(:name dired-details+
+	       :type emacswiki
+	       :features dired-details+)
 
 	ess
 	org-mode
+	pymacs
+	ropemacs
 	))
 
 

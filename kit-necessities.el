@@ -51,10 +51,9 @@
 ;; kill a word by C-w to match the shell
 ;(global-set-key "\C-w" 'backward-kill-word)
 
-;; cua mode binds C-x/c/v to cut/copy/paste
-(setq cua-enable-cua-keys nil) ;; use only for rectangle selection
-(cua-mode t)
-;; cua-mode also activates delete-selection-mode automatically
+;; use cua-mode for the rectangle support, global mark mode, but leave the C-x
+;; C-z C-v keys untouched
+(cua-selection-mode t) ;; cua-mode also activates delete-selection-mode automatically
 
 ;; make the clipboard work using the x clipboard
 (setq x-select-enable-clipboard t)

@@ -6,9 +6,6 @@
 ;; ============================ Enable a backtrace when problems occur
 ;;(setq debug-on-error t)
 
-;; separate the 'Customize' preferences
-(setq custom-file "~/.emacs.d/kit-custom.el")
-(load custom-file 'noerror)
 
 ;;recursion depth -- increase when in trouble. if you need to raise,
 ;; perhaps there is an issue with your .emacs files - check that first
@@ -20,6 +17,10 @@
 (setq dotfiles-dir (file-name-directory
                     (or (buffer-file-name) load-file-name)))
 (add-to-list 'load-path dotfiles-dir)
+
+;; separate the 'Customize' preferences
+(setq custom-file (concat dotfiles-dir "kit-custom.el"))
+
 
 ;; ============================ Load up el-get, the package manager
 
@@ -163,9 +164,30 @@
 ;; TODO.. fix python dependencies, etc.
 ;;  (require 'my-python)
 
+;; Load the M-x customize file last
+(load custom-file 'noerror) ;noerror is there if custom file does not exist
 
-;; --------------------------- smarter redo system (obsolete?)
-;;(require 'redo+)
+
+;; -- from Emacs Starter Kit --
+;; This is where you should put code that you don't think would be useful to
+;; everyone. That will allow you to merge with newer versions of the kit
+;; without conflicts.
+
+;; 1. a file named after your user (user-login-name) with the extension ".el"
+;; 2. if a directory named after your user exists, it will be added to the
+;; load-path, and any elisp files in it will be loaded.
+;; 3. a file named after the current hostname ending in ".el" which will allow
+;; host-specific configuration.
+(setq system-specific-config (concat dotfiles-dir system-name ".el")
+      user-specific-config (concat dotfiles-dir user-login-name ".el")
+      user-specific-dir (concat dotfiles-dir user-login-name))
+(add-to-list 'load-path user-specific-dir)
+
+(if (file-exists-p system-specific-config) (load system-specific-config))
+(if (file-exists-p user-specific-config) (load user-specific-config))
+(if (file-exists-p user-specific-dir)
+  (mapc #'load (directory-files user-specific-dir nil ".*el$")))
+
 
 
 

@@ -119,7 +119,15 @@
                                                     (turn-on-auto-fill)
                                                     (require 'asciidoc)))))
 
-        ess
+        ;; took out the build instructions from the normal recipe because my TeX
+        ;; does not work
+        (:name ess
+               :type svn
+               :url "https://svn.r-project.org/ESS/trunk/"
+               :info "doc/info/"
+               :load-path ("lisp")
+               :features ess-site)
+
         org-mode
         pymacs
         ropemacs
@@ -131,7 +139,7 @@
    (add-to-list 'el-get-sources  'naquadah-theme))
 
 
-(el-get)
+(el-get 'sync)
 
 
 

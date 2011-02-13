@@ -30,19 +30,18 @@ To update: issue 'M-x el-get-update' or go to the directory ~/.emacs.d/el-get/el
 
 (At least in emacs < 24.1) one needs to either install 'package.el' as a recipe or set the 'package-user-dir' variable appropriately
 
+el-get-remove still does not work. usually i just eliminate name from .status.el and remove directory
 
 == TODO
-- fix ESS installation. I believe it does not combile because of texinfo/macports problem
-- To turn off max highlighting only for Dired mode, do ‘M-x customize-option font-lock-maximum-decoration’ and insert an entry for ‘dired-mode’ that specifies ‘default’ highlighting for it.
 
-- incorporate my-python.el with the autocomplete function, etc. see if this https://github.com/gabrielelanaro/emacs-starter-kit/blob/master/starter-kit-python.el has any useful customization
+- incorporate my-python.el with the autocomplete function, etc; 
 
-- incorporate the useful pieces of the emacs-starter-kit 
--- https://github.com/squ1b3r/emacs-starter-kit this is also using el-get
--- https://github.com/technomancy/emacs-starter-kit/tree this is the original
--- https://github.com/kjhealy/emacs-starter-kit focus on R/ESS/latex
--- 
+- adapt to use for latex (to write thesis) look at kjhealy's esk (in particular his kjhealy.el file) to see how to install latex on mac
 
 - learn ido-mode http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/ and define the customizations that we want/need
 
 - fix autocomplete + yasnippet, so that tab actually expands yasnippets
+
+- map the apple command key (i need to be able to do Home/End with Apple-<up/down>!)
+
+- add tango soft theme https://github.com/kjhealy/tangosoft-theme

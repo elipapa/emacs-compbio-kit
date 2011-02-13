@@ -9,32 +9,108 @@
 (setq ffap-machine-p-known 'accept) ; no pinging
 (setq ffap-url-regexp nil) ; disable URL features in ffap
 (setq ffap-ftp-regexp nil) ; disable FTP features in ffap
-(define-key global-map (kbd "C-x C-f") 'find-file-at-point)
+
+
 
 ;; ido
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+(when (> emacs-major-version 21)
+  (ido-mode t)
+  (setq ido-enable-prefix nil
+        ido-enable-flex-matching t
+        ido-create-new-buffer 'always
+        ido-use-filename-at-point 'guess
+        ido-everywhere t
+        ido-max-prospects 10))
+
 
 (setq ido-create-new-buffer 'always)
-;; ;; Jump to a definition in the current file.
-;; (global-set-key "\C-x\C-i" 'ido-imenu)
-;; ;; File finding
-;; (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
-;; (global-set-key (kbd "C-x C-M-f") 'find-file-in-project)
-;; (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
-;; (global-set-key (kbd "C-x C-p") 'find-file-at-point)
-;; (global-set-key (kbd "C-c y") 'bury-buffer)
-;; (global-set-key (kbd "C-c r") 'revert-buffer)
-;; (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
-;; (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(defun recentf-ido-find-file ()
+  "Find a recent file using ido."
+  (interactive)
+  (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
+    (when file
+      (find-file file))))
 
 
-(require 'ibuffer)
-(global-set-key "\C-x\C-b" 'ibuffer)
+;; Imenu
+(set-default 'imenu-auto-rescan t)
 
-;; use iswitchb-mode for C-x b
-(iswitchb-mode)
+(defun ido-imenu ()
+  "Update the imenu index and then use ido to select a symbol to navigate to.
+Symbols matching the text at point are put first in the completion list."
+  (interactive)
+  (imenu--make-index-alist)
+  (let ((name-and-pos '())
+        (symbol-names '()))
+    (flet ((addsymbols (symbol-list)
+                       (when (listp symbol-list)
+                         (dolist (symbol symbol-list)
+                           (let ((name nil) (position nil))
+                             (cond
+                              ((and (listp symbol) (imenu--subalist-p symbol))
+                               (addsymbols symbol))
+                              
+                              ((listp symbol)
+                               (setq name (car symbol))
+                               (setq position (cdr symbol)))
+                              
+                              ((stringp symbol)
+                               (setq name symbol)
+                               (setq position (get-text-property 1 'org-imenu-marker symbol))))
+                             
+                             (unless (or (null position) (null name))
+                               (add-to-list 'symbol-names name)
+                               (add-to-list 'name-and-pos (cons name position))))))))
+      (addsymbols imenu--index-alist))
+    ;; If there are matching symbols at point, put them at the beginning of `symbol-names'.
+    (let ((symbol-at-point (thing-at-point 'symbol)))
+      (when symbol-at-point
+        (let* ((regexp (concat (regexp-quote symbol-at-point) "$"))
+               (matching-symbols (delq nil (mapcar (lambda (symbol)
+                                                     (if (string-match regexp symbol) symbol))
+                                                   symbol-names))))
+          (when matching-symbols
+            (sort matching-symbols (lambda (a b) (> (length a) (length b))))
+            (mapc (lambda (symbol) (setq symbol-names (cons symbol (delete symbol symbol-names))))
+                  matching-symbols)))))
+    (let* ((selected-symbol (ido-completing-read "Symbol? " symbol-names))
+           (position (cdr (assoc selected-symbol name-and-pos))))
+      (goto-char position))))
+
+
+
+
+;; switching buffers
+(require 'ibuffer) ;; for C-x C-b
+(iswitchb-mode) ;; use iswitchb-mode for C-x b
+
+;;display categories
+(setq ibuffer-saved-filter-groups
+      '(("home"
+	 ("emacs-config" (or (filename . ".emacs.d")
+			     (filename . "emacs-config")))
+	 ("Org" (or (mode . (or  )rg-mode)
+		    (filename . "OrgMode")))
+	 ("Web Dev" (or (mode . html-mode)
+			(mode . css-mode)))
+	 ("Magit" (name . "\*magit"))
+	 ("ESS" (mode . ess-mode))
+         ("LaTeX" (mode . latex-mode))
+	 ("Help" (or (name . "\*Help\*")
+		     (name . "\*Apropos\*")
+		     (name . "\*info\*"))))))
+
+(add-hook 'ibuffer-mode-hook 
+          '(lambda ()
+             (ibuffer-switch-to-saved-filter-groups "home")))
+(setq ibuffer-show-empty-filter-groups nil)                     
+(setq ibuffer-expert t)
+(add-hook 'ibuffer-mode-hook 
+          '(lambda ()
+             (ibuffer-auto-mode 1)
+             (ibuffer-switch-to-saved-filter-groups "home")))
+
 
 
 ;; ------------------------------------- mark and transient mark mode
@@ -46,7 +122,7 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (interactive)
   (push-mark (point) t nil)
   (message "Pushed mark to ring"))
-(global-set-key (kbd "C-`") 'push-mark-no-activate)
+
 
 ;; jump to the mark 
 ;; replaces the binding on M-`  (command that opens up a terminal-friendly menu bar in the minibuffer)
@@ -55,7 +131,7 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (set-mark-command 1))
-(global-set-key (kbd "M-`") 'jump-to-mark)
+
 
 ;; when you exchange point and mark, do not activate. 
 (defun exchange-point-and-mark-no-activate ()
@@ -63,24 +139,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (exchange-point-and-mark)
   (deactivate-mark nil))
-(define-key global-map [remap exchange-point-and-mark] 'exchange-point-and-mark-no-activate)
 
-;; --------------------------------------------- registers and rings
 
-;; bind the list-register function, which has been recently included in emacs
-(global-set-key (kbd "C-x r v") 'list-registers)
-
-;; Now, the M-y key binding will activate browse-kill-ring iff the last command
-;; was not a 'yank'.
-(when (require 'browse-kill-ring nil 'noerror)
-  (browse-kill-ring-default-keybindings))
-
-;; C-c y will show a little pop-up menu with the your kill-menu entries.
-(global-set-key "\C-cy" '(lambda ()
-   (interactive)
-   (popup-menu 'yank-menu)))
-
-;; (setq-default kill-ring-max 60)
 
 
 
@@ -125,13 +185,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
         (set-window-buffer (funcall selector) this-win)
         (select-window (funcall selector)))
       (setq arg (if (plusp arg) (1- arg) (1+ arg))))))
-
-
-;; set the keybindings, 'C-x 4' is where most of the gnu emacs binding for new
-;; windows exist
-(global-set-key (kbd "C-x 4 t") 'transpose-buffers)
-(global-set-key (kbd "C-x 4 h") 'split-window-vertical-to-horizontal)
-(global-set-key (kbd "C-x 4 v") 'split-window-horizontal-to-vertical)
 
 
 

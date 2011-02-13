@@ -43,7 +43,6 @@
         fit-frame
         full-ack
         ipython
-        markdown-mode
         python-mode
         rst-mode
         pylookup
@@ -57,7 +56,9 @@
         nav
         smooth-scroll
         smooth-scrolling
-
+        magit
+        buffer-move
+        markdown-mode
 
         (:name yasnippet
                :after (lambda ()
@@ -77,17 +78,7 @@
                                                   #'autopair-python-triple-quote-action))))
                         ))
 
-        (:name buffer-move
-               :after (lambda ()
-                        (global-set-key (kbd "<C-S-up>")     'buf-move-up)
-                        (global-set-key (kbd "<C-S-down>")   'buf-move-down)
-                        (global-set-key (kbd "<C-S-left>")   'buf-move-left)
-                        (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
-
-
-        (:name magit
-               :after (lambda ()
-                        (global-set-key (kbd "C-x C-z") 'magit-status)))
+        
 
         ;; from specific URLs
         (:name ssh
@@ -97,16 +88,14 @@
         (:name volatile-highlights
                :type git
                :url "git://github.com/k-talo/volatile-highlights.el.git")
-        
+
 
         ;; from EmacsWiki
         (:name dired-details+
                :type emacswiki
                :features dired-details+)
         (:name ac-R :type emacswiki)
-        (:name column-marker :type emacswiki
-               :after (lambda ()
-                        (global-set-key [?\C-c ?m] 'column-marker-1)))
+        (:name column-marker :type emacswiki)
         (:name cursor-chg :type emacswiki)
 
         ;; from ELPA
@@ -137,7 +126,7 @@
 
 (when window-system
    (add-to-list 'el-get-sources  'color-theme-tango)
-   (add-to-list 'el-get-sources  'naquadah-theme))
+   (add-to-list 'el-get-sources  'naquadah-theme)))
 
 
 (el-get 'sync)
@@ -148,21 +137,20 @@
 ;; ============================ load customizations
 
 (require 'kit-necessities)
+(require 'kit-bindings)
 (if (equal window-system 'ns)
     (progn
       (require 'kit-macos)))
 (require 'kit-shell-term)
 (require 'kit-diredtramp)
 (require 'kit-navigation)
+
+(require 'kit-coding)
 (require 'kit-ess)
 (require 'kit-orgmode)
-(require 'kit-python)
 (require 'kit-misc)
+(require 'kit-python) ;; TODO.. fix python dependencies, etc.
 
-;;(require 'kit-coding)
-
-;; TODO.. fix python dependencies, etc.
-;;  (require 'my-python)
 
 ;; Load the M-x customize file last
 (load custom-file 'noerror) ;noerror is there if custom file does not exist
@@ -178,6 +166,11 @@
 ;; load-path, and any elisp files in it will be loaded.
 ;; 3. a file named after the current hostname ending in ".el" which will allow
 ;; host-specific configuration.
+
+(when (eq system-type 'darwin)
+  ;; Work around a bug on OS X where system-name always has a dot
+  (setq system-name (car (split-string system-name "\\."))))
+
 (setq system-specific-config (concat dotfiles-dir system-name ".el")
       user-specific-config (concat dotfiles-dir user-login-name ".el")
       user-specific-dir (concat dotfiles-dir user-login-name))

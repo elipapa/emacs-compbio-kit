@@ -22,10 +22,14 @@
       ))
 
 ;; highlight current editing line
-(global-hl-line-mode)
+;(global-hl-line-mode) ;try for a bit to do it only in the coding buffers
 
 ;;line numbers on the left panel
-(linum-mode 1)
+(global-linum-mode 1)
+(setq linum-format "%4d ") ;; make some extra space and keep right justified
+
+
+
 
 ;; --------------------------------------- fix autosave and backup
 
@@ -48,10 +52,13 @@
       `((".*" ,temporary-file-directory t)))
 
 
-;; ---------------------------------------- editing + selection
+;; ---------------------------------------- standards
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
-;; kill a word by C-w to match the shell
-;(global-set-key "\C-w" 'backward-kill-word)
+
+;; ---------------------------------------- editing + selection
 
 ;; use cua-mode for the rectangle support, global mark mode, but leave the C-x
 ;; C-z C-v keys untouched
@@ -97,15 +104,9 @@
 
 ;; make sure files finish in a newline
 (setq require-final-newline 't)
-
+(set-default 'indicate-empty-lines t)
 
 ;; ---------------------------------------- windows + buffers
-;; save window configuration history and navigate with C-c <left/right>
-(winner-mode 1)
-
-;; helps moving around windows - this does not work in ORG mode
-(windmove-default-keybindings 'meta)
-(setq windmove-wrap-around t)
 
 
 ;; unique names for buffers (library included in GNU emacs)
@@ -135,7 +136,7 @@
                (rename-buffer new-name)
                (set-visited-file-name new-name)
                (set-buffer-modified-p nil)))))))
-(global-set-key (kbd "C-c r") 'rename-file-and-buffer)
+
 
 
 
@@ -158,27 +159,18 @@
                                 'font-lock-comment-face))))))
 
 
+;; wordwrapping.. experiment here with truncate lines
+(setq truncate-partial-width-windows nil)
+;(setq truncate-lines 80)
 
+;; whitespace-mode
+(setq whitespace-style '(trailing lines space-before-tab
+                                  face indentation space-after-tab))
+(setq whitespace-line-column 100)
 
-
-;; --------------------------------------------- registers and rings
-
-;; bind the list-register function, which has been recently included in emacs
-(global-set-key (kbd "C-x r v") 'list-registers)
-
-;; Now, the M-y key binding will activate browse-kill-ring iff the last command
-;; was not a 'yank'.
-(when (require 'browse-kill-ring nil 'noerror)
-  (browse-kill-ring-default-keybindings))
-
-;; C-c y will show a little pop-up menu with the your kill-menu entries.
-(global-set-key "\C-cy" '(lambda ()
-   (interactive)
-   (popup-menu 'yank-menu)))
-
-;; (setq-default kill-ring-max 60)
+(add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 
 
 
 ;; ================================================================
-(provide 'kit-necessities)
+

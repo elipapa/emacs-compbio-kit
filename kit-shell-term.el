@@ -17,9 +17,6 @@
 ;; use bash
 (setq multi-term-program "/bin/bash") 
 
-;; set up some shortcuts
-(global-set-key (kbd "C-c t") 'multi-term-next)
-(global-set-key (kbd "C-c T") 'multi-term) ;; create a new one
 
 ;;and adjust colors for multi-term... (as explained in the emacswiki)
 ;; (custom-set-variables

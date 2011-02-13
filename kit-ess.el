@@ -29,8 +29,11 @@
 
 ;; from:
 ;; http://blogisticreflections.wordpress.com/2009/10/01/r-object-tooltips-in-ess/
+;; which has been included in ESS since 5.3
 ;; uses C-c C-g as the keybindin
-(require 'ess-R-object-tooltip)
+(add-hook 'ess-mode-hook
+	    '(lambda()
+	       (local-set-key [(C-c C-g)] 'ess-r-args-show)))
 
 ;;================================
 (provide 'kit-ess)

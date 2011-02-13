@@ -4,7 +4,7 @@
 ;; =========================================================================
 
 ;; ============================ Enable a backtrace when problems occur
-;;(setq debug-on-error t)
+(setq debug-on-error t)
 
 
 ;;recursion depth -- increase when in trouble. if you need to raise,
@@ -42,9 +42,9 @@
         browse-kill-ring
         fit-frame
         full-ack
-        ipython
         python-mode
-        rst-mode
+	ipython ;need to be after python-mode in this list
+	rst-mode
         pylookup
         undo-tree
         rainbow-mode      ;;displays strings representing colors with the color
@@ -126,7 +126,7 @@
 
 (when window-system
    (add-to-list 'el-get-sources  'color-theme-tango)
-   (add-to-list 'el-get-sources  'naquadah-theme)))
+   (add-to-list 'el-get-sources  'naquadah-theme))
 
 
 (el-get 'sync)

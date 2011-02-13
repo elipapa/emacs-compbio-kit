@@ -26,22 +26,7 @@
 (setq delete-by-moving-to-trash t)
 
 
-;; ---------------- Apple-key bindings (obsolete?)
-;; from the author of Carbon Emacs
-;(setq mac-command-modifier 'alt)
 
-;(require 'mac-key-mode)
-;(mac-key-mode 1)
-;; In order to set additional key bindings,
-;; modify 'mac-key-mode-map' in your ~/.emacs file:
-;; (define-key mac-key-mode-map [(alt l)] 'goto-line)
-
-;; switch focus between windows
-;(define-key mac-key-mode-map (kbd "A-[") 'other-window)
-;(define-key mac-key-mode-map (kbd "A-]") 'other-window)
-
-;; fullscreen
-(global-set-key [(A return)] 'ns-toggle-fullscreen)
 
 
 ;; if you are using the mouse, make sure minibuffer closes what it was doing

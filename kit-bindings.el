@@ -1,6 +1,14 @@
 ;;; kit-bindings.el
 ;;; put all bindings here, so you can reference to them when you forget
 
+;; apple mac os x keybindings
+(when (equal window-system 'ns)
+  ;; fullscreen
+  (global-set-key (kbd "<s-return>") 'ns-toggle-fullscreen)
+  ;;top and end of buffer
+  (global-set-key (kbd "<s-up>")     'beginning-of-buffer) 
+  (global-set-key (kbd "<s-down>")   'end-of-buffer))
+
 
 ;; kill a word by C-w to match the shell
 ;(global-set-key "\C-w" 'backward-kill-word)
@@ -9,12 +17,14 @@
 ;;"Undo" instead.
 (global-set-key (kbd "C-z") 'undo)
 
+
 ;; save window configuration history and navigate with C-c <left/right>
 (winner-mode 1)
 (global-set-key (kbd "C-c <up>") 'winner-undo)
 (global-set-key (kbd "C-c <down>") 'winner-redo)
 
-;; helps moving around windows - this does not work in ORG mode
+;; helps moving around windows - this does not work in ORG mode, but there is a
+;; fix in kit-org;
 ;; use M + arrows to activate the desired window
 (windmove-default-keybindings 'meta)
 (setq windmove-wrap-around t)
@@ -99,6 +109,15 @@
 ;; ;; display images
 ;; (local-set-key "\M-I" 'org-toggle-iimage-in-org)
 
+;;ESS
+;; (local-set-key [(shift return)] 'my-ess-eval)))
+;; (local-set-key [C-up] 'comint-previous-input)
+;; (local-set-key [C-down] 'comint-next-input)))
+
+;; Rnw files
+;;(local-set-key [(shift return)] 'my-ess-eval))) 
+;; cachSweave() compilation with M-n w
+;;(define-key noweb-minor-mode-map "\M-nw" 'ess-swv-weave2)
 
 
 ;; bind the list-register function, which has been recently included in emacs

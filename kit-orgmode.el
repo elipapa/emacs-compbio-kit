@@ -1,6 +1,7 @@
 ;; org mode stuff =================================================
 
-;(require 'org-install) ;;no need to turn this on if org comes with emacs
+;;(require 'org-install) ;;no need to turn this on if org comes with emacs
+
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 (setq org-completion-use-ido t)
@@ -49,14 +50,15 @@
 (setq org-use-speed-commands t)
 
 ;; this activates a number of widely used languages to use in babel code blocks
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (sh . t)
-   (R . t)
-   (perl . t)
-   (ruby . t)
-   (python . t)))
+;; FIXME: until i can compile org-mode with my install of TeX, this will not work
+;; (org-babel-do-load-languages
+;;  'org-babel-load-languages
+;;  '((emacs-lisp . t)
+;;    (sh . t)
+;;    (R . t)
+;;    (perl . t)
+;;    (ruby . t)
+;;    (python . t)))
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
 

@@ -5,7 +5,7 @@
 
 ;; completion with Rope
 (require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
+;(pymacs-load "ropemacs" "rope-") ;FIXME
 (eval-after-load 'auto-complete
   '(progn
      (ac-ropemacs-initialize)
@@ -167,4 +167,4 @@ is passed after the options."
 
 
 ;; ============================
-(provide kit-python)
+(provide 'kit-python)

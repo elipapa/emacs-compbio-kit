@@ -60,4 +60,4 @@
 
 
 ;=====================
-(provide kit-misc)
+(provide 'kit-misc)

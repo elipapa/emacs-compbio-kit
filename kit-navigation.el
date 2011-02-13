@@ -83,14 +83,14 @@ Symbols matching the text at point are put first in the completion list."
 
 ;; switching buffers
 (require 'ibuffer) ;; for C-x C-b
-(iswitchb-mode) ;; use iswitchb-mode for C-x b
+(iswitchb-mode 1) ;; use iswitchb-mode for C-x b
 
 ;;display categories
 (setq ibuffer-saved-filter-groups
       '(("home"
 	 ("emacs-config" (or (filename . ".emacs.d")
 			     (filename . "emacs-config")))
-	 ("Org" (or (mode . (or  )rg-mode)
+	 ("Org" (or (mode . org-mode)
 		    (filename . "OrgMode")))
 	 ("Web Dev" (or (mode . html-mode)
 			(mode . css-mode)))

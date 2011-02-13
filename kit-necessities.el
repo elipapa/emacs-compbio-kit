@@ -104,7 +104,8 @@
 
 ;; make sure files finish in a newline
 (setq require-final-newline 't)
-(set-default 'indicate-empty-lines t)
+;; draw some ugly bars on the left when the file is done
+;(set-default 'indicate-empty-lines t)
 
 ;; ---------------------------------------- windows + buffers
 
@@ -145,19 +146,14 @@
 (setq-default fill-column 80)
 ;;(setq auto-fill-mode 1)
 
-;; activate autofill for all text mode buffers:
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;(global-visual-line-mode t)
+;;; prefer auto-fill to visual line wrap in ESS mode
+(add-hook 'ess-mode-hook 'turn-on-auto-fill)
+(add-hook 'inferior-ess-mode-hook 'turn-on-auto-fill) 
 
-;; To automatically fill comments but not code in ProgrammingModes, something
-;; like this can be used:
-(add-hook 'c-mode-common-hook
-              (lambda ()
-                (auto-fill-mode 1)
-                (set (make-local-variable 'fill-nobreak-predicate)
-                     (lambda ()
-                       (not (eq (get-text-property (point) 'face)
-                                'font-lock-comment-face))))))
-
+;;; but turn off auto-fill in tex and markdown
+(add-hook 'markdown-mode-hook 'turn-off-auto-fill)
+(add-hook 'latex-mode-hook 'turn-off-auto-fill)
 
 ;; wordwrapping.. experiment here with truncate lines
 (setq truncate-partial-width-windows nil)
@@ -173,4 +169,4 @@
 
 
 ;; ================================================================
-
+(provide 'kit-necessities)

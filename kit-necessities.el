@@ -24,6 +24,8 @@
 ;; highlight current editing line
 (global-hl-line-mode)
 
+;;line numbers on the left panel
+(linum-mode 1)
 
 ;; --------------------------------------- fix autosave and backup
 

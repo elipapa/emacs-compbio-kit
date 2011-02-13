@@ -1,0 +1,15 @@
+== TODO
+
+- incorporate my-python.el with the autocomplete function, etc; 
+
+- fix ropemacs + pymacs interaction
+
+- adapt to use for latex (to write thesis) look at kjhealy's esk (in particular his kjhealy.el file) to see how to install latex on mac
+
+- learn ido-mode http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/ and define the customizations that we want/need
+
+- fix autocomplete + yasnippet, so that tab actually expands yasnippets
+
+- map the apple command key (i need to be able to do Home/End with Apple-<up/down>!)
+
+- add tango soft theme https://github.com/kjhealy/tangosoft-theme

@@ -4,7 +4,7 @@
 ;; =========================================================================
 
 ;; ============================ Enable a backtrace when problems occur
-(setq debug-on-error t)
+;;(setq debug-on-error t)
 
 
 ;;recursion depth -- increase when in trouble. if you need to raise,

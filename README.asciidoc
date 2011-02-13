@@ -1,6 +1,10 @@
 emacs-compbio-kit
 =================
 
+The focus of this set of emacs customization is to provide a smooth experience while working in computational biology and bioinformatics under Mac OSX. 
+Python (with ipython) and R (with ESS) are the tools I spend most of my time with.
+
+
 == package managers
 
 this is what i understand at the moment (feb 10 2011) about package managers:
@@ -14,7 +18,7 @@ this is what i understand at the moment (feb 10 2011) about package managers:
 
 So:
 
-it is best to move the big LISPs directories (org-mode and ESS) out of my version control and put them in some other version control (el-get or package.el through ELPA)
+it was best to move the big LISPs directories (org-mode and ESS) out of my version control and put them in some other version control (el-get or package.el through ELPA)
 
 - two feasible ways to do so:
 1. use git submodules (See http://github.com/eschulte/emacs-starter-kit/ for an example) and do a git pull for everything you need
@@ -32,18 +36,3 @@ To update: issue 'M-x el-get-update' or go to the directory ~/.emacs.d/el-get/el
 
 el-get-remove still does not work. usually i just eliminate name from .status.el and remove directory
 
-== TODO
-
-- incorporate my-python.el with the autocomplete function, etc; 
-
-- fix ropemacs + pymacs interaction
-
-- adapt to use for latex (to write thesis) look at kjhealy's esk (in particular his kjhealy.el file) to see how to install latex on mac
-
-- learn ido-mode http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/ and define the customizations that we want/need
-
-- fix autocomplete + yasnippet, so that tab actually expands yasnippets
-
-- map the apple command key (i need to be able to do Home/End with Apple-<up/down>!)
-
-- add tango soft theme https://github.com/kjhealy/tangosoft-theme

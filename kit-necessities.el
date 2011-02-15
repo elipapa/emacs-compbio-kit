@@ -160,9 +160,11 @@
 ;(setq truncate-lines 80)
 
 ;; whitespace-mode
-(setq whitespace-style '(trailing lines space-before-tab
-                                  face indentation space-after-tab))
-(setq whitespace-line-column 100)
+(setq whitespace-style '(trailing lines-tail space-before-tab
+                                  tabs tab-mark face indentation
+                                  newline-mark newline
+                                  space-after-tab))
+(setq whitespace-line-column 90)
 
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 

@@ -85,6 +85,8 @@ Symbols matching the text at point are put first in the completion list."
 (require 'ibuffer) ;; for C-x C-b
 (iswitchb-mode 1) ;; use iswitchb-mode for C-x b
 
+(setq iswitchb-prompt-newbuffer nil) ;don't ask me
+
 ;;display categories
 (setq ibuffer-saved-filter-groups
       '(("home"

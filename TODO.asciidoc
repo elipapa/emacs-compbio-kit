@@ -1,4 +1,4 @@
-== TODO
+= TODO
 
 - incorporate my-python.el with the autocomplete function, etc; 
 
@@ -8,8 +8,62 @@
 
 - learn ido-mode http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/ and define the customizations that we want/need
 
-- fix autocomplete + yasnippet, so that tab actually expands yasnippets
-
 - map the apple command key (i need to be able to do Home/End with Apple-<up/down>!)
 
 - add tango soft theme https://github.com/kjhealy/tangosoft-theme
+
+- figure out HTML editing in emacs
+http://www.emacswiki.org/emacs/HtmlMode
+http://www.youtube.com/watch?v=u2r8JfJJgy8
+
+- use recent files mode
+http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/
+
+- learn to use ido mode better
+http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
+
+- kill frame AND buffer at the same time (apple+W ?)
+
+- make sure emacs + screen + ess-remote works. (look at kjhealy ESS package on his starter kit)
+
+- fix tab for yasnippets + autocomplete to work together
+https://github.com/genehack/smart-tab/blob/master/smart-tab.el
+intelligent tabs (indent with tabs, align with spaces) + clean (.py, .R code only) on every save
+http://www.emacswiki.org/emacs/SmartTabs (https://gist.github.com/188961)
+
+- how to select region *by keyboard* and kill it?
+
+- implement easy code folding (like textmate). cedet?
+
+- learn how to better use mercurial and git (magit) from inside emacs
+
+-can we make elscreen work somehow? 
+ -it will be nice to save entire configurations as tabs
+ -elscreen does not work very well now, especially in cocoa
+
+- how to wrap a code chunk with \begin{figure} and \end{figure} after the code chunk is written ?
+
+- how to automatically export org-mode calendar to iCal
+
+- try out anything.el, dubbed the "quicksilver for emacs"
+
+== python
+http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/
+http://jesselegg.com/archives/2010/03/14/emacs-python-programmers-2-virtualenv-ipython-daemon-mode/
+http://github.com/gabrielelanaro/emacs-for-python#readme
+http://reinout.vanrees.org/weblog/2010/05/11/pep8-pyflakes-emacs.html
+http://wiki.gungfu.de/Main/HackingPythonWithEmacs
+http://pypi.python.org/pypi/virtualenvwrapper-emacs-desktop/1.0
+http://jasonmbaker.com/7-tools-for-working-with-python-in-emacs-and
+http://github.com/aculich/virtualenv.el
+http://github.com/akaihola/flymake-python
+http://www.rwdev.eu/articles/emacspyeng
+
+
+== For tsv /csv files: 
+- http://www.emacswiki.org/emacs/TsvMode ?
+- http://www.emacswiki.org/emacs/CsvMode
+- http://www.emacswiki.org/emacs/SpreadSheet
+- fix defaults for TSV files ( no line wrap, highlight line which you are on, whitespace-mode,etc..)
+- turn on 'truncate long lines' as an automatic setting for csv-mode 
+- turn on 'whitespace-mode' for csv-mode, so that you can catch newlines at the end of buffer

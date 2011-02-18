@@ -35,7 +35,7 @@
         package ;;added only to satisfy a package-user-dir requirement
         switch-window
         vkill
-        nxhtml
+        nxhtml ;;contains zen-coding mode and MuMaMo
         auto-complete
         dired+
         dired-details
@@ -50,7 +50,6 @@
         rainbow-mode      ;;displays strings representing colors with the color
         multi-term
         regex-tool
-        csv-mode
         auctex
         processing-mode
         nav
@@ -60,6 +59,11 @@
         buffer-move
         markdown-mode
 
+        (:name csv-mode
+               :after (lambda ()
+                        (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
+                        (autoload 'csv-mode "csv-mode"
+                          "Major mode for editing comma-separated value files." t)))
         (:name yasnippet
                :after (lambda ()
                         (yas/initialize)

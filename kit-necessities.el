@@ -74,6 +74,8 @@
 ;; more at http://emacs-fu.blogspot.com/2009/01/balancing-your-parentheses.html
 (show-paren-mode 1)
 
+;; for some reason this command is disabled-by-default. so we enable it.
+(put 'downcase-region 'disabled nil)
 
 ;; ---------------------------------------- minor annoyances
 

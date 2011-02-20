@@ -23,6 +23,13 @@ http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files
 http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/
 
 - kill frame AND buffer at the same time (apple+W ?)
+http://stackoverflow.com/questions/1854573/kill-the-associated-buffer-when-close-the-emacs-client-frame-by-pressing-altf4
+http://www.emacswiki.org/emacs/Delete_Frames_Easily_-_But_Not_Too_Easily
+http://emacs-fu.blogspot.com/2010/02/dealing-with-many-buffers-ibuffer.html
+http://www.slac.stanford.edu/comp/unix/gnu-info/emacs_21.html
+http://www.gnu.org/s/emacs/manual/html_node/elisp/Standard-Hooks.html
+http://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
+
 
 - make sure emacs + screen + ess-remote works. (look at kjhealy ESS package on his starter kit)
 
@@ -47,6 +54,8 @@ http://www.emacswiki.org/emacs/SmartTabs (https://gist.github.com/188961)
 
 - try out anything.el, dubbed the "quicksilver for emacs"
 
+- turn off linum-mode in org-mode
+
 == python
 http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/
 http://jesselegg.com/archives/2010/03/14/emacs-python-programmers-2-virtualenv-ipython-daemon-mode/
@@ -67,3 +76,4 @@ http://www.rwdev.eu/articles/emacspyeng
 - fix defaults for TSV files ( no line wrap, highlight line which you are on, whitespace-mode,etc..)
 - turn on 'truncate long lines' as an automatic setting for csv-mode 
 - turn on 'whitespace-mode' for csv-mode, so that you can catch newlines at the end of buffer
+

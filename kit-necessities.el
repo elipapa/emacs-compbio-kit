@@ -172,5 +172,10 @@
 
 
 
+;; ------------------------------ faster saves
+;; taken from http://www.method-combination.net/blog/archives/2011/03/11/speeding-up-emacs-saves.html
+(setq vc-handled-backends nil)
+
+
 ;; ================================================================
 (provide 'kit-necessities)

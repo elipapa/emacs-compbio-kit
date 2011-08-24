@@ -13,12 +13,12 @@
 
 (setq inhibit-splash-screen t)
 (tool-bar-mode -1)
+
 ;; i keep the menu bar if i have a windowed system. sometimes it's
-;; useful to remember key bindings. Same goes for the scrollbars
+;; useful to remember key bindings. 
 (if (eq window-system 'nil)
     (progn
       (menu-bar-mode -1)
-      (scroll-bar-mode -1)
       ))
 
 ;; highlight current editing line
@@ -74,6 +74,8 @@
 ;; more at http://emacs-fu.blogspot.com/2009/01/balancing-your-parentheses.html
 (show-paren-mode 1)
 
+;; for some reason this command is disabled-by-default. so we enable it.
+(put 'downcase-region 'disabled nil)
 
 ;; ---------------------------------------- minor annoyances
 
@@ -168,6 +170,11 @@
 
 (add-to-list 'safe-local-variable-values '(whitespace-line-column . 80))
 
+
+
+;; ------------------------------ faster saves
+;; taken from http://www.method-combination.net/blog/archives/2011/03/11/speeding-up-emacs-saves.html
+(setq vc-handled-backends nil)
 
 
 ;; ================================================================

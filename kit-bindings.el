@@ -7,7 +7,13 @@
   (global-set-key (kbd "<s-return>") 'ns-toggle-fullscreen)
   ;;top and end of buffer
   (global-set-key (kbd "<s-up>")     'beginning-of-buffer) 
-  (global-set-key (kbd "<s-down>")   'end-of-buffer))
+  (global-set-key (kbd "<s-down>")   'end-of-buffer)
+  (global-set-key (kbd "<s-left>")   'beginning-of-line-text)
+  (global-set-key (kbd "<s-right>")  'end-of-line)
+
+  ;(global-set-key (kbd "<s-left>")   'beginning-of-visual-line)
+  ;(global-set-key (kbd "<s-right>")  'end-of-visual-line)
+  )
 
 
 ;; kill a word by C-w to match the shell

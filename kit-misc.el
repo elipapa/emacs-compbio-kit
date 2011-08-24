@@ -58,6 +58,9 @@
 ;;        (set-face-background 'magit-item-highlight "white"))))
 
 
+;; enable narrowing (Restrict editing in this buffer to the current region)
+(put 'narrow-to-region 'disabled nil)
+
 
 ;=====================
 (provide 'kit-misc)

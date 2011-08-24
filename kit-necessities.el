@@ -13,12 +13,12 @@
 
 (setq inhibit-splash-screen t)
 (tool-bar-mode -1)
+
 ;; i keep the menu bar if i have a windowed system. sometimes it's
-;; useful to remember key bindings. Same goes for the scrollbars
+;; useful to remember key bindings. 
 (if (eq window-system 'nil)
     (progn
       (menu-bar-mode -1)
-      (scroll-bar-mode -1)
       ))
 
 ;; highlight current editing line

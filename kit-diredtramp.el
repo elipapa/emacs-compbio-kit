@@ -3,7 +3,7 @@
 
 ;; Toggle listing details (ll vs. ls) in dired buffer
 ;;    this feature has been added to Emacs, starting with Emacs 22.2
-(require 'dired-details+)
+;;(require 'dired-details+)
 ;;(require 'dired-x) ;; not necessary if using dired-details already
 
 

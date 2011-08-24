@@ -24,42 +24,19 @@
 
 ;; ============================ Load up el-get, the package manager
 
-;; (notice the double nested structure is necessary to keep the
-;; packages in order)
+;; notice the double nested structure is necessary to keep the
+;; packages in order
 (add-to-list 'load-path (concat dotfiles-dir "el-get/el-get"))
-(require 'el-get)
 
+(unless (require 'el-get nil t) ;; if we don't have it locally, install it from github
+  (url-retrieve
+   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
+   (lambda (s)
+     (end-of-buffer)
+     (eval-print-last-sexp))))
 
 (setq el-get-sources
-      '(el-get
-        package ;;added only to satisfy a package-user-dir requirement
-        switch-window
-        vkill
-        nxhtml ;;contains zen-coding mode and MuMaMo
-        auto-complete
-        dired+
-        dired-details
-        browse-kill-ring
-        fit-frame
-        full-ack
-        python-mode
-	ipython ;need to be after python-mode in this list
-	rst-mode
-        pylookup
-        undo-tree
-        rainbow-mode      ;;displays strings representing colors with the color
-        multi-term
-        regex-tool
-        auctex
-        processing-mode
-        nav
-        smooth-scroll
-        smooth-scrolling
-        magit
-        buffer-move
-        markdown-mode
-
-        (:name csv-mode
+      '((:name csv-mode
                :after (lambda ()
                         (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
                         (autoload 'csv-mode "csv-mode"
@@ -71,16 +48,16 @@
                         (add-to-list 'yas/snippet-dirs (concat dotfiles-dir "mysnippets"))
                         (yas/reload-all)))
 
-        (:name autopair
-               :after (lambda ()
-                        (autopair-global-mode 1)
-                        (setq autopair-autowrap t)
-                        (add-hook 'python-mode-hook
-                                  #'(lambda ()
-                                      (setq autopair-handle-action-fns
-                                            (list #'autopair-default-handle-action
-                                                  #'autopair-python-triple-quote-action))))
-                        ))
+        ;; (:name autopair
+        ;;        :after (lambda ()
+        ;;                 (autopair-global-mode 1)
+        ;;                 (setq autopair-autowrap t)
+        ;;                 (add-hook 'python-mode-hook
+        ;;                           #'(lambda ()
+        ;;                               (setq autopair-handle-action-fns
+        ;;                                     (list #'autopair-default-handle-action
+        ;;                                           #'autopair-python-triple-quote-action))))
+        ;;                 ))
 
         
 
@@ -95,24 +72,23 @@
 
 
         ;; from EmacsWiki
-        (:name dired-details+
-               :type emacswiki
-               :features dired-details+)
+        ;; (:name dired-details+
+        ;;        :type emacswiki
+        ;;        :features dired-details+)
         (:name ac-R :type emacswiki)
         (:name column-marker :type emacswiki)
         (:name cursor-chg :type emacswiki)
 
         ;; from ELPA
         (:name kill-ring-search :type elpa)
-        (:name asciidoc
-               :type elpa
+        (:name asciidoc :type elpa
                :after (lambda ()
                         (autoload 'doc-mode "doc-mode" nil t)
                         (add-to-list 'auto-mode-alist '("\\.adoc$" . doc-mode))
                         (add-hook 'doc-mode-hook '(lambda ()
                                                     (turn-on-auto-fill)
                                                     (require 'asciidoc)))))
-
+	
         ;; took out the build instructions from the normal recipe because my TeX
         ;; does not work
         (:name ess
@@ -121,11 +97,8 @@
                :info "doc/info/"
                :load-path ("lisp")
                :features ess-site)
-
-        org-mode
-        pymacs
-        ropemacs
         ))
+
 
 
 (when window-system
@@ -133,7 +106,23 @@
    (add-to-list 'el-get-sources  'naquadah-theme))
 
 
-(el-get 'sync)
+(setq my-packages
+      (append
+       (mapcar 'el-get-source-name el-get-sources)
+       '(cssh nxhtml org-mode package switch-window vkill auto-complete 
+	      ;;dired+ 
+	      dired-details browse-kill-ring fit-frame full-ack ;python-mode
+              rst-mode pylookup undo-tree multi-term regex-tool 
+	      ;;auctex
+              processing-mode nav smooth-scroll smooth-scrolling magit buffer-move
+              markdown-mode
+              nxhtml ;;contains zen-coding mode and MuMaMo
+              ;ipython ;need to be after python-mode in this list
+              rainbow-mode      ;;displays strings representing colors with the color
+              )
+       ))
+
+(el-get 'sync my-packages)
 
 
 
@@ -153,7 +142,7 @@
 (require 'kit-ess)
 (require 'kit-orgmode)
 (require 'kit-misc)
-(require 'kit-python) ;; TODO.. fix python dependencies, etc.
+(require 'kit-python) ;; TODO.. fix python dependencies, clean up all the python-mode-hooks
 
 
 ;; Load the M-x customize file last
@@ -185,19 +174,4 @@
 (if (file-exists-p user-specific-dir)
   (mapc #'load (directory-files user-specific-dir nil ".*el$")))
 
-
-
-
-
-;; NOTES
-;; Some key lisp functions:
-
-;;You can test for a given feature (library) using (require... nil t)
-;; or `featurep' if already loaded.
-
-;;You can test for the presence of a specific function using
-;;  `fboundp'.
-
-;; You can test for the presence of a specific variable using
-;;  `boundp'.
 

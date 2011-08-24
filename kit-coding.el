@@ -32,8 +32,8 @@
 (add-hook 'kit-coding-hook 'add-watchwords)
 
 (defun run-coding-hook ()
-109-  "Enable things that are convenient across all coding buffers."
-110:  (run-hooks 'kit-coding-hook))
+  "Enable things that are convenient across all coding buffers."
+  (run-hooks 'kit-coding-hook))
 
 
 (defvar kit-coding-hook nil
@@ -79,7 +79,7 @@
                   (delete-file (concat buffer-file-name "c"))))))
 
 (add-hook 'emacs-lisp-mode-hook 'esk-remove-elc-on-save)
-
+(add-hook 'emacs-lisp-mode-hook 'run-coding-hook)
 
 
 ;; ============================================================================

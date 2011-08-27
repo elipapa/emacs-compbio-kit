@@ -105,23 +105,19 @@
 
         ;; python-mode recipe needs to be fixed, removing doctest-mode, in
         ;; el-get master branch
-        (:name python-mode
-               :type emacsmirror
-               :description "Major mode for editing Python programs"
-               :features (python-mode)
-               :compile nil
-               :post-init (lambda ()
-                            (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-                            (add-to-list 'interpreter-mode-alist '("python" . python-mode))
-                            (autoload 'python-mode "python-mode" "Python editing mode." t)))
+        ;; (:name python-mode
+        ;;        :type emacsmirror
+        ;;        :description "Major mode for editing Python programs"
+        ;;        :features (python-mode)
+        ;;        :compile nil
+        ;;        :post-init (lambda ()
+        ;;                     (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
+        ;;                     (add-to-list 'interpreter-mode-alist '("python" . python-mode))
+        ;;                     (autoload 'python-mode "python-mode" "Python editing mode." t)))
 
         ))
 
 
-
-(when window-system
-   (add-to-list 'el-get-sources  'color-theme-tango)
-   (add-to-list 'el-get-sources  'naquadah-theme))
 
 
 (setq my-packages
@@ -129,7 +125,7 @@
        (mapcar 'el-get-source-name el-get-sources)
        '(cssh nxhtml org-mode package switch-window vkill auto-complete 
 	      ;;dired+ 
-	      dired-details browse-kill-ring fit-frame full-ack ;python-mode
+	      dired-details browse-kill-ring fit-frame full-ack python-mode
               rst-mode pylookup undo-tree multi-term regex-tool 
 	      ;;auctex
               processing-mode nav smooth-scroll smooth-scrolling magit buffer-move

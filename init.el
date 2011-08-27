@@ -48,6 +48,11 @@
                         (add-to-list 'yas/snippet-dirs (concat dotfiles-dir "mysnippets"))
                         (yas/reload-all)))
 
+        (:name color-theme-zenburn24
+               :description "Zenburn color theme ported to emacs24"
+               :type http
+               :url "https://raw.github.com/djcb/elisp/master/themes/zenburn-theme.el")
+        
         ;; (:name autopair
         ;;        :after (lambda ()
         ;;                 (autopair-global-mode 1)

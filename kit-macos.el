@@ -54,6 +54,8 @@
 ;;Display those special buffer frames without a tool bar
 (add-to-list 'special-display-frame-alist '(tool-bar-lines . 0))
 
+;;Display a wider than normal initial frame
+(setq initial-frame-alist '((width . 100) ))
 
 ;; ----------------- spelling (using macports aspell)
 ;; on the command line:

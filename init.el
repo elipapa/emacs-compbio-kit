@@ -133,6 +133,7 @@
               nxhtml ;;contains zen-coding mode and MuMaMo
               ipython ;need to be after python-mode in this list
               rainbow-mode      ;;displays strings representing colors with the color
+              color-theme color-theme-ir-black
               )
        ))
 

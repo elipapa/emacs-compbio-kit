@@ -8,9 +8,10 @@
 
 - learn ido-mode http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/ and define the customizations that we want/need
 
-- map the apple command key (i need to be able to do Home/End with Apple-<up/down>!)
-
-- add tango soft theme https://github.com/kjhealy/tangosoft-theme
+- add themes
+should use only themes that fit the new emacs24 scheme with `deftheme`
+-- [tangosoft](https://github.com/kjhealy/tangosoft-theme)
+-- tango-dark
 
 - figure out HTML editing in emacs
 http://www.emacswiki.org/emacs/HtmlMode
@@ -35,7 +36,6 @@ To enable CEDET that were merged into emacs
 (global-ede-mode 1)
 (require 'semantic/sb)
 (semantic-mode 1)
-
 
 
 - make sure emacs + screen + ess-remote works. (look at kjhealy ESS package on his starter kit)
@@ -86,4 +86,10 @@ http://www.rwdev.eu/articles/emacspyeng
 
 == some URLs
 
-{"title":"emacs TODOs","date":"27/7/2011","tabs":[{"title":"EmacsWiki: Write Room","url":"http://emacswiki.org/emacs/WriteRoom","win":"4627"},{"title":"elisp - Emacs: highlighting TODO *only* in comments - Stack Overflow","url":"http://stackoverflow.com/questions/2367611/emacs-highlighting-todo-only-in-comments","win":"4627"},{"title":"python - Auto expanding blocks of comments in emacs - Stack Overflow","url":"http://stackoverflow.com/questions/4711179/auto-expanding-blocks-of-comments-in-emacs","win":"4627"},{"title":"How to use Emacs to write comments with proper indentation, line-length, and wrapping? - Stack Overflow","url":"http://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wrap","win":"4627"},{"title":"emacs - What's in your python mode hook? - Stack Overflow","url":"http://stackoverflow.com/questions/5936928/whats-in-your-python-mode-hook","win":"4627"},{"title":"EmacsWiki: Managing Hook Variables","url":"http://www.emacswiki.org/emacs/ManagingHookVariables","win":"4627"},{"title":"emacs-fu: hooks","url":"http://emacs-fu.blogspot.com/2008/12/hooks.html","win":"4627"},{"title":"starter-kit-python.el at master from tibonihoo/emacs-starter-kit - GitHub","url":"https://github.com/tibonihoo/emacs-starter-kit/blob/master/starter-kit-python.el","win":"4627"},{"title":"gabrielelanaro/emacs-for-python - GitHub","url":"https://github.com/gabrielelanaro/emacs-for-python","win":"4627"},{"title":"EmacsWiki: Python Programming In Emacs","url":"http://www.emacswiki.org/emacs/PythonProgrammingInEmacs","win":"4627"},{"title":"EnigmaCurry/emacs - GitHub","url":"https://github.com/EnigmaCurry/emacs","win":"4627"},{"title":"gabrielelanaro/emacs-for-python @ GitHub","url":"http://gabrielelanaro.github.com/emacs-for-python/","win":"4627"},{"title":"Intro - GitHub","url":"https://github.com/gabrielelanaro/emacs-for-python/wiki/workflow","win":"4627"},{"title":"Virtualenv - GitHub","url":"https://github.com/gabrielelanaro/emacs-for-python/wiki/Virtualenv","win":"4627"},{"title":"Configuring Emacs as a Python IDE | Pedro Kroger","url":"http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/","win":"4627"},{"title":"My Emacs Python environment « SaltyCrane Blog","url":"http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/","win":"4627"},{"title":"Exuberant Ctags","url":"http://ctags.sourceforge.net/","win":"4627"},{"title":"Mastering Emacs","url":"http://www.masteringemacs.org/","win":"4627"},{"title":"fgallina/python.el at 37bd4d5cfc50dbd21ba2612318649bf842dffd33 - GitHub","url":"https://github.com/fgallina/python.el/tree/37bd4d5cfc50dbd21ba2612318649bf842dffd33","win":"4627"}]}
+http://emacswiki.org/emacs/WriteRoom
+
+highlighting TODO *only* in comments - Stack Overflow","url":"http://stackoverflow.com/questions/2367611/emacs-highlighting-todo-only-in-comments"
+
+Auto expanding blocks of comments in emacs - Stack Overflow","url":"http://stackoverflow.com/questions/4711179/auto-expanding-blocks-of-comments-in-emacs"
+
+"How to use Emacs to write comments with proper indentation, line-length, and wrapping? - Stack Overflow","url":"http://stackoverflow.com/questions/2214199/how-to-use-emacs-to-write-comments-with-proper-indentation-line-length-and-wrap","win":"4627"},{"title":"emacs - What's in your python mode hook? - Stack Overflow","url":"http://stackoverflow.com/questions/5936928/whats-in-your-python-mode-hook","win":"4627"},{"title":"EmacsWiki: Managing Hook Variables","url":"http://www.emacswiki.org/emacs/ManagingHookVariables","win":"4627"},{"title":"emacs-fu: hooks","url":"http://emacs-fu.blogspot.com/2008/12/hooks.html","win":"4627"},{"title":"starter-kit-python.el at master from tibonihoo/emacs-starter-kit - GitHub","url":"https://github.com/tibonihoo/emacs-starter-kit/blob/master/starter-kit-python.el","win":"4627"},{"title":"gabrielelanaro/emacs-for-python - GitHub","url":"https://github.com/gabrielelanaro/emacs-for-python","win":"4627"},{"title":"EmacsWiki: Python Programming In Emacs","url":"http://www.emacswiki.org/emacs/PythonProgrammingInEmacs","win":"4627"},{"title":"EnigmaCurry/emacs - GitHub","url":"https://github.com/EnigmaCurry/emacs","win":"4627"},{"title":"gabrielelanaro/emacs-for-python @ GitHub","url":"http://gabrielelanaro.github.com/emacs-for-python/","win":"4627"},{"title":"Intro - GitHub","url":"https://github.com/gabrielelanaro/emacs-for-python/wiki/workflow","win":"4627"},{"title":"Virtualenv - GitHub","url":"https://github.com/gabrielelanaro/emacs-for-python/wiki/Virtualenv","win":"4627"},{"title":"Configuring Emacs as a Python IDE | Pedro Kroger","url":"http://pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/","win":"4627"},{"title":"My Emacs Python environment « SaltyCrane Blog","url":"http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/","win":"4627"},{"title":"Exuberant Ctags","url":"http://ctags.sourceforge.net/","win":"4627"},{"title":"Mastering Emacs","url":"http://www.masteringemacs.org/","win":"4627"},{"title":"fgallina/python.el at 37bd4d5cfc50dbd21ba2612318649bf842dffd33 - GitHub","url":"https://github.com/fgallina/python.el/tree/37bd4d5cfc50dbd21ba2612318649bf842dffd33","win":"4627"}]}

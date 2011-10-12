@@ -1,4 +1,4 @@
-;; Settings for GNU emacs 23, cocoa build =======================================
+;; Settings for GNU emacs 24, cocoa build =======================================
 ;; ==============================================================================
 
 ;; use in server mode
@@ -15,7 +15,7 @@
 
 ;; Set the default font 
 ;; (here b/c I may not have Inconsolata on non-Mac machines)
-(set-face-attribute 'default nil :font "Inconsolata 12")
+(set-face-attribute 'default nil :font "Inconsolata 13")
 
 ;;to use option as meta in emacs23 (obsolete)
 ;;(setq mac-option-modifier 'meta)

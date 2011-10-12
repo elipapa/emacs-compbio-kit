@@ -30,7 +30,7 @@
 
 (unless (require 'el-get nil t) ;; if we don't have it locally, install it from github
   (url-retrieve
-   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
    (lambda (s)
      (end-of-buffer)
      (eval-print-last-sexp))))
@@ -48,21 +48,17 @@
                         (add-to-list 'yas/snippet-dirs (concat dotfiles-dir "mysnippets"))
                         (yas/reload-all)))
 
-        (:name color-theme-zenburn24
-               :description "Zenburn color theme ported to emacs24"
-               :type http
-               :url "https://raw.github.com/djcb/elisp/master/themes/zenburn-theme.el")
         
-        ;; (:name autopair
-        ;;        :after (lambda ()
-        ;;                 (autopair-global-mode 1)
-        ;;                 (setq autopair-autowrap t)
-        ;;                 (add-hook 'python-mode-hook
-        ;;                           #'(lambda ()
-        ;;                               (setq autopair-handle-action-fns
-        ;;                                     (list #'autopair-default-handle-action
-        ;;                                           #'autopair-python-triple-quote-action))))
-        ;;                 ))
+        (:name autopair
+               :after (lambda ()
+                        (autopair-global-mode 1)
+                        (setq autopair-autowrap t)
+                        (add-hook 'python-mode-hook
+                                  #'(lambda ()
+                                      (setq autopair-handle-action-fns
+                                            (list #'autopair-default-handle-action
+                                                  #'autopair-python-triple-quote-action))))
+                        ))
 
         
 
@@ -81,7 +77,6 @@
         ;;        :type emacswiki
         ;;        :features dired-details+)
         (:name ac-R :type emacswiki)
-        (:name column-marker :type emacswiki)
         (:name cursor-chg :type emacswiki)
 
         ;; from ELPA
@@ -103,18 +98,6 @@
                :load-path ("lisp")
                :features ess-site)
 
-        ;; python-mode recipe needs to be fixed, removing doctest-mode, in
-        ;; el-get master branch
-        ;; (:name python-mode
-        ;;        :type emacsmirror
-        ;;        :description "Major mode for editing Python programs"
-        ;;        :features (python-mode)
-        ;;        :compile nil
-        ;;        :post-init (lambda ()
-        ;;                     (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-        ;;                     (add-to-list 'interpreter-mode-alist '("python" . python-mode))
-        ;;                     (autoload 'python-mode "python-mode" "Python editing mode." t)))
-
         ))
 
 
@@ -126,14 +109,12 @@
        '(cssh nxhtml org-mode package switch-window vkill auto-complete 
 	      ;;dired+ 
 	      dired-details browse-kill-ring fit-frame full-ack python-mode
-              rst-mode pylookup undo-tree multi-term regex-tool 
+              rst-mode pylookup undo-tree multi-term regex-tool column-marker
 	      ;;auctex
               processing-mode nav smooth-scroll smooth-scrolling magit buffer-move
               markdown-mode
               nxhtml ;;contains zen-coding mode and MuMaMo
-              ipython ;need to be after python-mode in this list
-              rainbow-mode      ;;displays strings representing colors with the color
-              color-theme color-theme-ir-black
+              ;;ipython ;need to be after python-mode in this list
               )
        ))
 

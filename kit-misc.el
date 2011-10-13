@@ -26,7 +26,12 @@
 
 ;; text editing
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-;(add-hook 'text-mode-hook 'turn-on-flyspell) ;;too slow
+;;(add-hook 'text-mode-hook 'turn-on-flyspell) ;;too slow
+(defun markdown-custom ()
+  "markdown-mode-hook"
+  (setq markdown-command "markdown | smartypants"))
+(add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))
+(add-hook 'markdown-mode-hook 'turn-on-auto-fill)
 
 (defun lorem ()
   "Insert a lorem ipsum."

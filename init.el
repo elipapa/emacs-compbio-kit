@@ -48,17 +48,17 @@
                         (add-to-list 'yas/snippet-dirs (concat dotfiles-dir "mysnippets"))
                         (yas/reload-all)))
 
-        
-        (:name autopair
-               :after (lambda ()
-                        (autopair-global-mode 1)
-                        (setq autopair-autowrap t)
-                        (add-hook 'python-mode-hook
-                                  #'(lambda ()
-                                      (setq autopair-handle-action-fns
-                                            (list #'autopair-default-handle-action
-                                                  #'autopair-python-triple-quote-action))))
-                        ))
+        ;; this is now replaced by electric-pair-mode
+        ;; (:name autopair
+        ;;        :after (lambda ()
+        ;;                 (autopair-global-mode 1)
+        ;;                 (setq autopair-autowrap t)
+        ;;                 (add-hook 'python-mode-hook
+        ;;                           #'(lambda ()
+        ;;                               (setq autopair-handle-action-fns
+        ;;                                     (list #'autopair-default-handle-action
+        ;;                                           #'autopair-python-triple-quote-action))))
+        ;;                 ))
 
         
 

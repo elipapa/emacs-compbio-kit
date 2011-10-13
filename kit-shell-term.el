@@ -10,9 +10,6 @@
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 
-;; only needed if you use autopair
-(add-hook 'term-mode-hook
-  #'(lambda () (setq autopair-dont-activate t)))
 
 ;; use bash
 (setq multi-term-program "/bin/bash") 

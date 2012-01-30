@@ -91,14 +91,15 @@ Symbols matching the text at point are put first in the completion list."
 (setq ibuffer-saved-filter-groups
       '(("home"
 	 ("emacs-config" (or (filename . ".emacs.d")
-			     (filename . "emacs-config")))
+			     (filename . "kit-")))
 	 ("Org" (or (mode . org-mode)
 		    (filename . "OrgMode")))
 	 ("Web Dev" (or (mode . html-mode)
 			(mode . css-mode)))
 	 ("Magit" (name . "\*magit"))
 	 ("ESS" (mode . ess-mode))
-         ("LaTeX" (mode . latex-mode))
+         ("LaTeX" (or (mode . latex-mode)
+                      (mode . LaTeX-mode)))
 	 ("Help" (or (name . "\*Help\*")
 		     (name . "\*Apropos\*")
 		     (name . "\*info\*"))))))

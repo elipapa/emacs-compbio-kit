@@ -36,9 +36,9 @@
 	       (local-set-key [(C-c C-g)] 'ess-r-args-show)))
 
 
-;;; Define Rnw-mode and make LaTeX aware of it. 
-(add-to-list 'auto-mode-alist '("\\.Rnw\\'" . Rnw-mode))
-(add-to-list 'auto-mode-alist '("\\.Snw\\'" . Rnw-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Sweave
+
 
 ;; Make TeX and RefTex aware of Snw and Rnw files
 (setq reftex-file-extensions
@@ -46,18 +46,29 @@
 (setq TeX-file-extensions
       '("Snw" "Rnw" "nw" "tex" "sty" "cls" "ltx" "texi" "texinfo"))
 
+;;; Define Rnw-mode and make LaTeX aware of it. 
+(add-to-list 'auto-mode-alist '("\\.Rnw\\'" . Rnw-mode))
+(add-to-list 'auto-mode-alist '("\\.Snw\\'" . Rnw-mode))
+
+;; Linking ESS with AucTex
 ;; Lets you do 'C-c C-c Sweave' from your Rnw file
 (add-hook 'Rnw-mode-hook
-	  (lambda ()
-	    (add-to-list 'TeX-command-list
-			 '("Sweave" "R CMD Sweave %s"
-			   TeX-run-command nil (latex-mode) :help "Run Sweave") t)
-	    (add-to-list 'TeX-command-list
-			 '("LatexSweave" "%l %(mode) %s"
-			   TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)
-	    (setq TeX-command-default "Sweave")))
+ (lambda ()
+  (add-to-list 'TeX-expand-list '("%rnw" file "Rnw" t) t)
+  (add-to-list 'TeX-command-list
+   '("Stangle" "R CMD Stangle %rnw" 
+     TeX-run-command nil (latex-mode) :help "Run Stangle") t)
+  (add-to-list 'TeX-command-list
+   '("Sweave" "R CMD Sweave %rnw" 
+     TeX-run-command nil (latex-mode) :help "Run Sweave") t)
+  (add-to-list 'TeX-command-list
+   '("LatexSweave" "%l %(mode) %s"
+     TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)
+  (setq TeX-command-default "Sweave")))
 
-
+;;all of the above may be taken care by this new one-liner. will test next time
+;;I use sweave
+;;(setq ess-swv-plug-into-AUCTeX-p t)
 
 
 ;;; Make shift-enter to a lot in ESS.

@@ -33,6 +33,9 @@
 (add-hook 'markdown-mode-hook '(lambda() (markdown-custom)))
 (add-hook 'markdown-mode-hook 'turn-on-auto-fill)
 
+(setq sentence-end-double-space nil) ;period single space ends sentence
+; navigate with M-a and M-e
+
 (defun lorem ()
   "Insert a lorem ipsum."
   (interactive)

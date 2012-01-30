@@ -155,7 +155,6 @@
 
 ;;; but turn off auto-fill in tex and markdown
 (add-hook 'markdown-mode-hook 'turn-off-auto-fill)
-(add-hook 'latex-mode-hook 'turn-off-auto-fill)
 
 ;; wordwrapping.. experiment here with truncate lines
 (setq truncate-partial-width-windows nil)

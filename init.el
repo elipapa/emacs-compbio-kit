@@ -48,7 +48,9 @@
                         (add-to-list 'yas/snippet-dirs (concat dotfiles-dir "mysnippets"))
                         (yas/reload-all)))
 
-        ;; this is now replaced by electric-pair-mode
+        ;; this is now replaced by electric-pair-mode, but need to find a way to
+        ;; use that with python
+        
         ;; (:name autopair
         ;;        :after (lambda ()
         ;;                 (autopair-global-mode 1)
@@ -60,6 +62,10 @@
         ;;                                           #'autopair-python-triple-quote-action))))
         ;;                 ))
 
+
+        ;; modify dired-details to toggle "(" key shortcut
+        (:name dired-details
+               :after (dired-details-install))
         
 
         ;; from specific URLs
@@ -81,6 +87,7 @@
 
         ;; from ELPA
         (:name kill-ring-search :type elpa)
+	(:name auctex :type elpa)
         (:name asciidoc :type elpa
                :after (lambda ()
                         (autoload 'doc-mode "doc-mode" nil t)
@@ -108,10 +115,9 @@
        (mapcar 'el-get-source-name el-get-sources)
        '(cssh nxhtml org-mode package switch-window vkill auto-complete 
 	      ;;dired+ 
-	      dired-details browse-kill-ring fit-frame full-ack python-mode
+	      browse-kill-ring fit-frame full-ack python-mode
               rst-mode pylookup undo-tree multi-term regex-tool column-marker
-	      ;;auctex
-              processing-mode nav smooth-scroll smooth-scrolling magit buffer-move
+	      processing-mode nav smooth-scroll smooth-scrolling magit buffer-move
               markdown-mode
               nxhtml ;;contains zen-coding mode and MuMaMo
               ;;ipython ;need to be after python-mode in this list
@@ -121,6 +127,11 @@
 (el-get 'sync my-packages)
 
 
+
+;; themes
+;; custom Emacs 24 color themes support
+;(add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
+;(load-theme 'zenburn t)
 
 
 ;; ============================ load customizations
@@ -133,7 +144,7 @@
 (require 'kit-shell-term)
 (require 'kit-diredtramp)
 (require 'kit-navigation)
-
+(require 'kit-latex)
 (require 'kit-coding)
 (require 'kit-ess)
 (require 'kit-orgmode)

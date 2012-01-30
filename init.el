@@ -130,8 +130,8 @@
 
 ;; themes
 ;; custom Emacs 24 color themes support
-;(add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
-;(load-theme 'zenburn t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'zenburn t)
 
 
 ;; ============================ load customizations

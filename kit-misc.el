@@ -52,19 +52,6 @@
 (setq font-lock-maximum-decoration ;;make dired less colorful 
       '((dired-mode . default) (t . t))) ;; but make the rest as colorful as possible
 
-;; color-theme should handle these next two
-;; (eval-after-load 'diff-mode
-;;   '(progn
-;;      (set-face-foreground 'diff-added "green4")
-;;      (set-face-foreground 'diff-removed "red3")))
-
-;; (eval-after-load 'magit
-;;   '(progn
-;;      (set-face-foreground 'magit-diff-add "green3")
-;;      (set-face-foreground 'magit-diff-del "red3")
-;;      (when (not window-system)
-;;        (set-face-background 'magit-item-highlight "white"))))
-
 
 ;; enable narrowing (Restrict editing in this buffer to the current region)
 (put 'narrow-to-region 'disabled nil)

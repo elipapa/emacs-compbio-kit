@@ -15,18 +15,15 @@
 
 ;; Set the default font 
 ;; (here b/c I may not have Inconsolata on non-Mac machines)
-(set-face-attribute 'default nil :font "Inconsolata 13")
+(set-face-attribute 'default nil :font "Inconsolata 12")
 
 ;;to use option as meta in emacs23 (obsolete)
 ;;(setq mac-option-modifier 'meta)
 
 (setq use-dialog-box nil)
 
-;; ---------------- Trash
+;; Trash
 (setq delete-by-moving-to-trash t)
-
-
-
 
 
 ;; if you are using the mouse, make sure minibuffer closes what it was doing
@@ -34,18 +31,17 @@
   "kill the minibuffer"
   (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
     (abort-recursive-edit)))
-
 (add-hook 'mouse-leave-buffer-hook 'stop-using-minibuffer)
 
 
-;; ---------------- features in the latest versions
+;; features in the latest versions
 (if (eq emacs-major-version 23)
     (progn
       (global-visual-line-mode 1) ;;new word wrapping
       (recentf-mode 1) ;;recent files menu
       ))
 
-;; ---------------- having windows we use them
+;;Having windows we use them
 ;;Display various non-editing buffers in their own frames
 (setq special-display-buffer-names
       (nconc '("*Backtrace*" "*VC-log*" "*compilation*" "*grep*")
@@ -57,19 +53,11 @@
 ;;Display a wider than normal initial frame
 (setq initial-frame-alist '((width . 100) ))
 
-;; ----------------- spelling (using macports aspell)
-;; on the command line:
-;;  port install aspell
-;;  port install aspell-dict-en
-(setq ispell-program-name "aspell"
-      ispell-dictionary "english"
-      ispell-dictionary-alist
-      (let ((default '("[A-Za-z]" "[^A-Za-z]" "[']" nil
-                       ("-B" "-d" "english" "--dict-dir"
-                        "/Library/Application Support/cocoAspell/aspell6-en-6.0-0")
-                       nil iso-8859-1)))
-        `((nil ,@default)
-          ("english" ,@default))))
+;; ----------------- spelling (using homebrew aspell)
+;; install first on the command line using homebrew:
+;; 1brew install aspell --lang=en
+(setq-default ispell-program-name "aspell")
+(setq ispell-extra-args '("--sug-mode=ultra"))
 
 
 

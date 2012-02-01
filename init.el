@@ -63,9 +63,6 @@
         ;;                 ))
 
 
-        ;; modify dired-details to toggle "(" key shortcut
-        (:name dired-details
-               :after (dired-details-install))
         
 
         ;; from specific URLs
@@ -113,12 +110,12 @@
 (setq my-packages
       (append
        (mapcar 'el-get-source-name el-get-sources)
-       '(cssh nxhtml org-mode package switch-window vkill auto-complete 
-	      ;;dired+ 
+       '(cssh nxhtml org-mode switch-window vkill auto-complete 
+	      ;;dired+ package
 	      browse-kill-ring fit-frame full-ack python-mode
               rst-mode pylookup undo-tree multi-term regex-tool column-marker
 	      processing-mode nav smooth-scroll smooth-scrolling magit buffer-move
-              markdown-mode
+              markdown-mode dired-details
               nxhtml ;;contains zen-coding mode and MuMaMo
               ;;ipython ;need to be after python-mode in this list
               )
@@ -126,12 +123,7 @@
 
 (el-get 'sync my-packages)
 
-
-
-;; themes
-;; custom Emacs 24 color themes support
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'zenburn t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 
 ;; ============================ load customizations
@@ -150,7 +142,7 @@
 (require 'kit-orgmode)
 (require 'kit-misc)
 (require 'kit-python) ;; TODO.. fix python dependencies, clean up all the python-mode-hooks
-
+(require 'kit-ui)
 
 ;; Load the M-x customize file last
 (load custom-file 'noerror) ;noerror is there if custom file does not exist

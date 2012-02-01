@@ -147,6 +147,10 @@
 (global-set-key (kbd "C-x C-z") 'magit-status)
 
 
+;; dired
+(define-key dired-mode-map "(" 'dired-details-hide)
+(define-key dired-mode-map ")" 'dired-details-show)
+
 ;; CUA rectangle selection (from the .el file)
 ;; To start a rectangle, use [C-return] and extend it using the normal
 ;; movement keys (up, down, left, right, home, end, C-home,

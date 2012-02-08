@@ -100,6 +100,7 @@
       (append
        (mapcar 'el-get-source-name el-get-sources)
        '(cssh
+         dired-details
          nxhtml
          asciidoc
          org-mode

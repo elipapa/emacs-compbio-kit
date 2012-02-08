@@ -4,21 +4,11 @@
 ;; use in server mode
 (server-start)
 
-;; this updates the environment based on what specified in the plist
-;; rather than the path variable (when you call from Finder, PATH is not set)
-;(require 'osx-plist)
-;(osx-plist-update-environment)
-
-;; OR a better alternative: if you spend most of your time in Terminal.app and
-;; would like emacs to inherit your shell’s environment, open
-;; /Applications/Emacs.app will accomplish this.
-
-;; Set the default font 
+;; Set the default appearance of all frames 
 ;; (here b/c I may not have Inconsolata on non-Mac machines)
-(set-face-attribute 'default nil :font "Inconsolata 12")
+;;(set-face-attribute 'default nil :font "Inconsolata 12")
+(setq default-frame-alist '((font . "Inconsolata 12") (width . 100)))
 
-;;to use option as meta in emacs23 (obsolete)
-;;(setq mac-option-modifier 'meta)
 
 (setq use-dialog-box nil)
 
@@ -50,8 +40,6 @@
 ;;Display those special buffer frames without a tool bar
 (add-to-list 'special-display-frame-alist '(tool-bar-lines . 0))
 
-;;Display a wider than normal initial frame
-(setq initial-frame-alist '((width . 100) ))
 
 ;; ----------------- spelling (using homebrew aspell)
 ;; install first on the command line using homebrew:

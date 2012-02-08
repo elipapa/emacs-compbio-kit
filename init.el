@@ -80,16 +80,8 @@
         (:name cursor-chg :type emacswiki)
 
         ;; from ELPA
-        (:name kill-ring-search :type elpa)
 	(:name auctex :type elpa)
-        (:name asciidoc :type elpa
-               :after (lambda ()
-                        (autoload 'doc-mode "doc-mode" nil t)
-                        (add-to-list 'auto-mode-alist '("\\.adoc$" . doc-mode))
-                        (add-hook 'doc-mode-hook '(lambda ()
-                                                    (turn-on-auto-fill)
-                                                    (require 'asciidoc)))))
-	
+        
         ;; took out the build instructions from the normal recipe because my TeX
         ;; does not work
         (:name ess
@@ -109,11 +101,11 @@
        (mapcar 'el-get-source-name el-get-sources)
        '(cssh
          nxhtml
+         asciidoc
          org-mode
          vkill
          auto-complete 
          browse-kill-ring
-         fit-frame
          full-ack
          rst-mode
          pylookup
@@ -147,7 +139,7 @@
 
 (require 'kit-necessities)
 (require 'kit-bindings)
-(if (equal window-system 'ns)
+(if (eq system-type 'darwin)
     (progn
       (require 'kit-macos)))
 (require 'kit-shell-term)

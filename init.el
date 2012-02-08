@@ -103,6 +103,7 @@
          dired-details
          nxhtml
          asciidoc
+         ebib
          org-mode
          vkill
          auto-complete 

@@ -76,9 +76,6 @@
 
 
         ;; from EmacsWiki
-        ;; (:name dired-details+
-        ;;        :type emacswiki
-        ;;        :features dired-details+)
         (:name ac-R :type emacswiki)
         (:name cursor-chg :type emacswiki)
 
@@ -110,16 +107,36 @@
 (setq my-packages
       (append
        (mapcar 'el-get-source-name el-get-sources)
-       '(cssh nxhtml org-mode switch-window vkill auto-complete 
-	      ;;dired+ package
-	      browse-kill-ring fit-frame full-ack python-mode
-              rst-mode pylookup undo-tree multi-term regex-tool column-marker
-	      processing-mode nav smooth-scroll smooth-scrolling magit buffer-move
-              markdown-mode dired-details
-              nxhtml ;;contains zen-coding mode and MuMaMo
-              ;;ipython ;need to be after python-mode in this list
-              )
-       ))
+       '(cssh
+         nxhtml
+         org-mode
+         vkill
+         auto-complete 
+         browse-kill-ring
+         fit-frame
+         full-ack
+         rst-mode
+         pylookup
+         undo-tree
+         multi-term
+         regex-tool
+         column-marker
+         processing-mode
+         nav
+         magit
+         buffer-move
+         markdown-mode 
+         nxhtml ;;contains zen-coding mode and MuMaMo
+         ;;TODO: ISSUE scrolling
+         ;;smooth-scrolling ;;cannot be used at the same time as
+         ;;scroll-lock-mode, but works only on C-n/C-p one line moves
+         ;;
+         ;;TODO: ISSUE python
+         ;;python-mode
+         python
+         ;;ipython ;need to be after python-mode in this list
+         ;;ac-python
+         )))
 
 (el-get 'sync my-packages)
 

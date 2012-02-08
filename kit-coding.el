@@ -27,7 +27,7 @@
           1 font-lock-warning-face t))))
 
 (add-hook 'kit-coding-hook 'local-comment-auto-fill)
-(add-hook 'kit-coding-hook 'turn-on-hl-line-mode)
+;;(add-hook 'kit-coding-hook 'turn-on-hl-line-mode)
 (add-hook 'kit-coding-hook 'pretty-lambdas)
 (add-hook 'kit-coding-hook 'add-watchwords)
 

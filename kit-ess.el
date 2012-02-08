@@ -56,14 +56,14 @@
  (lambda ()
   (add-to-list 'TeX-expand-list '("%rnw" file "Rnw" t) t)
   (add-to-list 'TeX-command-list
-   '("Stangle" "R CMD Stangle %rnw" 
-     TeX-run-command nil (latex-mode) :help "Run Stangle") t)
+               '("Stangle" "R CMD Stangle %rnw" 
+                 TeX-run-command nil (latex-mode) :help "Run Stangle") t)
   (add-to-list 'TeX-command-list
-   '("Sweave" "R CMD Sweave %rnw" 
-     TeX-run-command nil (latex-mode) :help "Run Sweave") t)
+               '("Sweave" "R CMD Sweave %rnw" 
+                 TeX-run-command nil (latex-mode) :help "Run Sweave") t)
   (add-to-list 'TeX-command-list
-   '("LatexSweave" "%l %(mode) %s"
-     TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)
+               '("LatexSweave" "%l %(mode) %s"
+                 TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)
   (setq TeX-command-default "Sweave")))
 
 ;;all of the above may be taken care by this new one-liner. will test next time
@@ -71,7 +71,7 @@
 ;;(setq ess-swv-plug-into-AUCTeX-p t)
 
 
-;;; Make shift-enter to a lot in ESS.
+;;; Make shift-enter do a lot in ESS.
 ;; Use shift-enter to split window & launch R (if not running), execute
 ;; highlighted region (if R running & area highlighted), or execute
 ;; current line (and move to next line, skipping comments). Nice. See

@@ -40,11 +40,12 @@
 (setq TeX-view-program-selection '((output-pdf "Skim")))
 
 
-;; add XeTeX as one of the commands
-(add-to-list 'TeX-command-list
-             '("XeLaTeX_SyncteX" "%`xelatex --synctex=1%(mode)%' %t"
-               TeX-run-TeX nil (latex-mode doctex-mode) :help "Run XeLaTeX") t)
-
+;; ;; add XeTeX as one of the commands
+;; (add-to-list 'TeX-command-list
+;;              '("XeLaTeX_SyncteX" "%`xelatex --synctex=1%(mode)%' %t"
+;;                TeX-run-TeX nil (latex-mode doctex-mode) :help "Run XeLaTeX") t)
+;; may not find this necessary, given that AuCTex now has an option to choose
+;; the compiler in the dropdown menu
 
 
 (provide 'kit-latex)

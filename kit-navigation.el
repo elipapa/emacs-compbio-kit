@@ -5,6 +5,8 @@
 ;; one could also use iCicles or Anything, instead of IDO
 ;; TODO read http://www.emacswiki.org/emacs/InteractivelyDoThings
 
+
+
 ;; find-file-at-point when it makes sense
 (setq ffap-machine-p-known 'accept) ; no pinging
 (setq ffap-url-regexp nil) ; disable URL features in ffap
@@ -85,7 +87,7 @@ Symbols matching the text at point are put first in the completion list."
 (require 'ibuffer) ;; for C-x C-b
 (iswitchb-mode 1) ;; use iswitchb-mode for C-x b
 
-(setq iswitchb-prompt-newbuffer nil) ;don't ask me
+(setq iswitchb-prompt-newbuffer nil) ;don't ask if it should create a new buffer
 
 ;;display categories
 (setq ibuffer-saved-filter-groups
@@ -102,7 +104,9 @@ Symbols matching the text at point are put first in the completion list."
                       (mode . LaTeX-mode)))
 	 ("Help" (or (name . "\*Help\*")
 		     (name . "\*Apropos\*")
-		     (name . "\*info\*"))))))
+		     (name . "\*info\*")))
+         ("Special" (name . "\*"))
+         )))
 
 (add-hook 'ibuffer-mode-hook 
           '(lambda ()

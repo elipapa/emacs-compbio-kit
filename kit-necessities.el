@@ -96,18 +96,12 @@
 
 ;; ---------------------------------------- philosophical divides
 
-;; force emacs to use spaces instead of tabs
+;; force emacs to use spaces instead of tabs (no of spaces should be already
+;; specified in modes)
 (setq-default indent-tabs-mode nil)
-;; sets spaces to 4
-;;(setq c-basic-indent 2)
-;;(setq tab-width 4)
-;; NOTE: not turned on because it seems as if python-mode and ESS
-;; already operate based on that rule..
 
 ;; make sure files finish in a newline
 (setq require-final-newline 't)
-;; draw some ugly bars on the left when the file is done
-;(set-default 'indicate-empty-lines t)
 
 ;; ---------------------------------------- windows + buffers
 

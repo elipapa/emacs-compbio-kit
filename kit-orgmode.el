@@ -50,15 +50,14 @@
 (setq org-use-speed-commands t)
 
 ;; this activates a number of widely used languages to use in babel code blocks
-;; FIXME: until i can compile org-mode with my install of TeX, this will not work
-;; (org-babel-do-load-languages
-;;  'org-babel-load-languages
-;;  '((emacs-lisp . t)
-;;    (sh . t)
-;;    (R . t)
-;;    (perl . t)
-;;    (ruby . t)
-;;    (python . t)))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (sh . t)
+   (R . t)
+   (perl . t)
+   (ruby . t)
+   (python . t)))
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
 

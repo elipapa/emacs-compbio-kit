@@ -16,6 +16,11 @@
 ;; output default to PDF
 (setq TeX-PDF-mode t)
 
+;; xelatex together with fontspec allows to access and to use the native fonts
+;; of your system
+(setq TeX-engine 'xetex)
+
+
 
 ;; link Skim with AucTeX
 (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
@@ -39,6 +44,10 @@
 
 (setq TeX-view-program-selection '((output-pdf "Skim")))
 
+;; keybinding for Ebib
+(add-hook 'LaTeX-mode-hook #'(lambda ()
+          (local-set-key "\C-cb" 'ebib-insert-bibtex-key)))
+(global-set-key "\C-ce" 'ebib)
 
 ;; ;; add XeTeX as one of the commands
 ;; (add-to-list 'TeX-command-list

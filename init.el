@@ -73,8 +73,10 @@
         (:name volatile-highlights
                :type git
                :url "git://github.com/k-talo/volatile-highlights.el.git")
-
-
+        (:name monky
+               :type git
+               :url "git://github.com/ananthakumaran/monky.git")
+         
         ;; from EmacsWiki
         (:name ac-R :type emacswiki)
         (:name cursor-chg :type emacswiki)

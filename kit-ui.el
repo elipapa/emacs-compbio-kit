@@ -12,7 +12,7 @@
 
 ;; scroll while leaving the mark at the same pt - i find it great, some people
 ;; hate it
-(setq-default scroll-lock-mode t) ;setq-default to make it a global minor mode
+;; (setq-default scroll-lock-mode nil) ;setq-default to make it a global minor mode
 ;; alternatives to this are using one of the "smooth-scrolling" packages
 
 ;; (setq

@@ -122,9 +122,10 @@
          markdown-mode 
          nxhtml ;;contains zen-coding mode and MuMaMo
          ;;TODO: ISSUE scrolling
-         ;;smooth-scrolling ;;cannot be used at the same time as
-         ;;scroll-lock-mode, but works only on C-n/C-p one line moves
-         ;;
+         smooth-scroll;; works on page movemens C-v/M-v
+         smooth-scrolling ;;works only on C-n/C-p one line moves
+         ;; these two cannot be used at the same time as
+
          ;;TODO: ISSUE python
          ;;python-mode
          python

@@ -38,6 +38,11 @@
             (define-key yas/keymap [tab] 'yas/next-field)
             ))
 
+
+;; change fontset for org-mode but not for tables
+(add-hook 'org-mode-hook (lambda () (variable-pitch-mode t))
+(set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+
 ;; Speed commands enable single-letter commands in Org-mode files when
 ;; the point is at the beginning of a headline, or at the beginning of a
 ;; code block.

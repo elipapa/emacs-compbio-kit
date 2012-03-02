@@ -20,4 +20,7 @@
 ;;   scroll-conservatively 100000
 ;;   scroll-preserve-screen-position 1)
 
+;; nXhtml mode changes the background colors
+(setq mumamo-background-colors nil)
+
 (provide 'kit-ui)

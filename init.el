@@ -83,6 +83,7 @@
 
         ;; from ELPA
 	(:name auctex :type elpa)
+        ;;(:name css-mode :type elpa)
         
         ;; took out the build instructions from the normal recipe because my TeX
         ;; does not work
@@ -103,7 +104,6 @@
        (mapcar 'el-get-source-name el-get-sources)
        '(cssh
          dired-details
-         nxhtml
          asciidoc
          ebib
          org-mode
@@ -121,7 +121,14 @@
          nav
          magit
          buffer-move
-         markdown-mode 
+         markdown-mode
+         ;;ruby+rails
+         inf-ruby
+         ruby-compilation
+         ruby-mode
+         yaml-mode
+         rhtml-mode
+         scss-mode
          nxhtml ;;contains zen-coding mode and MuMaMo
          ;;TODO: ISSUE scrolling
          smooth-scroll;; works on page movemens C-v/M-v
